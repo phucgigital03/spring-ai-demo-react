@@ -1,5 +1,9 @@
 import { useState } from 'react'
 import './App.css'
+import ImageGenerator from './components/ImageGenerator';
+import AskAI from './components/AskAI';
+import RecipeGenerator from './components/RecipeGenerator';
+import AudioUploader from './components/AudioUploader';
 
 function App() {
   const [activeTab, setActiveTab] = useState("generate-image");
@@ -29,11 +33,18 @@ function App() {
         >
           Recipe Generator
         </button>
+        <button
+          className={activeTab === "audio-transcriber" ? "active" : ""}
+          onClick={()=>{handleChange("audio-transcriber")}}
+        >
+          Audio Transcriber
+        </button>
 
         <div>
-          {activeTab === "generate-image" && <h1>generate image</h1>}
-          {activeTab === "ask-ai" && <h1>ask ai</h1>}
-          {activeTab === "generate-recipe" && <h1>generate recipe</h1>}
+          {activeTab === "generate-image" && <ImageGenerator/>}
+          {activeTab === "ask-ai" && <AskAI/>}
+          {activeTab === "generate-recipe" && <RecipeGenerator/>}
+          {activeTab === "audio-transcriber" && <AudioUploader/>}
         </div>
 
       </div>
